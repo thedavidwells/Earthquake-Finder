@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <style type="text/css">
+  html { height: 100% }
+  body { height: 75%; margin: 100; padding: 0 }
+  #map-canvas { height: 90% }
+  </style>
+  <script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeIUEePOcu3XTjyF2tpuWA3-xKoIO4zjo"></script>
+  <script type="text/javascript" src="quakes.js"></script>
+  <!-- Bootstrap core CSS -->
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body onload="tenLargestQuakes()">
+  
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="http://www.TheDavidWells.com">David Wells</a>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="http://earthquakes.parseapp.com/">Home</a></li>
+          <li><a href="mailto:david@thedavidwells.com">Contact</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+
+  <div class="container" style="height:90%">
+
+    <br><br>
+    <div class="starter-template">
+      <h1>Earthquake Finder</h1>
+      <p class="lead">This tool will locate earthquakes in a user-defined location.</p>
+      
+      
+      <form id="addressForm" onsubmit="event.preventDefault();geoCodeLocation();">
+        <div>
+          <label for="address">Enter a Location:</label>
+          <input type="text"  name="address" id="address" placeholder="Location" size="65%" />
+          <button type="button" class ="btn btn-primary" onclick="event.preventDefault();geoCodeLocation();">Show Quakes!</button>
+        </div>
+      </form>  
+      <br>
+      <center><small>Hover cursor over a marker to view earthquake information.</small>
+        <br>
+        
+        
+      </div>
+      <div id="map-canvas"/>
+
+      <br>
+      
+    </div>
+    <br>
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Top 10 Earthquakes around the world:</h3>
+      </div>
+      <div class="panel-body">
+        <table class="table">
+         <ol>
+
+          <div id="top-10"/>
+        </ol>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>
